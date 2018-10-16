@@ -44,41 +44,41 @@ public class lobby extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
+        btn_invite = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        username = new javax.swing.JLabel();
+        btn_logout = new javax.swing.JButton();
+        txt_showUsername = new javax.swing.JTextField();
+        btn_edit = new javax.swing.JButton();
+        total = new javax.swing.JLabel();
+        score = new javax.swing.JLabel();
+        win = new javax.swing.JLabel();
+        draw = new javax.swing.JLabel();
+        lose = new javax.swing.JLabel();
+        txt_total = new javax.swing.JTextField();
+        txt_win = new javax.swing.JTextField();
+        txt_draw = new javax.swing.JTextField();
+        txt_lose = new javax.swing.JTextField();
+        online_player = new javax.swing.JLabel();
+        btn_ranking = new javax.swing.JButton();
+        btn_rules = new javax.swing.JButton();
+        btn_matching = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         list_User = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
+        btn_refresh = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(860, 552));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 51));
-        jButton7.setText("INVITE");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btn_invite.setBackground(new java.awt.Color(255, 255, 51));
+        btn_invite.setText("INVITE");
+        btn_invite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btn_inviteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 90, 30));
+        jPanel1.add(btn_invite, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 90, 30));
 
         jLabel1.setBackground(java.awt.Color.gray);
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -88,150 +88,154 @@ public class lobby extends javax.swing.JPanel {
         jLabel1.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 100));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("TH SarabunPSK", 1, 26)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 153, 51));
-        jLabel2.setText("Username  :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 120, 30));
+        username.setBackground(new java.awt.Color(255, 255, 255));
+        username.setFont(new java.awt.Font("TH SarabunPSK", 1, 26)); // NOI18N
+        username.setForeground(new java.awt.Color(0, 153, 51));
+        username.setText("Username  :");
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 120, 30));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 102));
-        jButton1.setFont(new java.awt.Font("TH Sarabun New", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Shutdown_18px.png"))); // NOI18N
-        jButton1.setText("LOG OUT");
-        jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_logout.setBackground(new java.awt.Color(255, 204, 102));
+        btn_logout.setFont(new java.awt.Font("TH Sarabun New", 1, 18)); // NOI18N
+        btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Shutdown_18px.png"))); // NOI18N
+        btn_logout.setText("LOG OUT");
+        btn_logout.setBorder(null);
+        btn_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_logoutActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 110, 30));
+        jPanel1.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 110, 30));
 
-        jTextField2.setBackground(new java.awt.Color(204, 255, 204));
-        jTextField2.setFont(new java.awt.Font("TH SarabunPSK", 1, 24)); // NOI18N
-        jTextField2.setEnabled(false);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txt_showUsername.setBackground(new java.awt.Color(204, 255, 204));
+        txt_showUsername.setFont(new java.awt.Font("TH SarabunPSK", 1, 24)); // NOI18N
+        txt_showUsername.setEnabled(false);
+        txt_showUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txt_showUsernameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 340, -1));
+        jPanel1.add(txt_showUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 340, -1));
 
-        jButton2.setBackground(new java.awt.Color(23, 243, 63));
-        jButton2.setFont(new java.awt.Font("TH Sarabun New", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/แก้ไข_15px.png"))); // NOI18N
-        jButton2.setText("Edit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_edit.setBackground(new java.awt.Color(23, 243, 63));
+        btn_edit.setFont(new java.awt.Font("TH Sarabun New", 1, 18)); // NOI18N
+        btn_edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/แก้ไข_15px.png"))); // NOI18N
+        btn_edit.setText("Edit");
+        btn_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_editActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 130, 30));
+        jPanel1.add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 130, 30));
 
-        jLabel3.setFont(new java.awt.Font("TH Sarabun New", 1, 19)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 153, 51));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("TOTAL");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, 90, -1));
+        total.setFont(new java.awt.Font("TH Sarabun New", 1, 19)); // NOI18N
+        total.setForeground(new java.awt.Color(0, 153, 51));
+        total.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        total.setText("TOTAL");
+        jPanel1.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, 90, -1));
 
-        jLabel4.setFont(new java.awt.Font("TH Sarabun New", 1, 22)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 153, 51));
-        jLabel4.setText("Score :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 70, 30));
+        score.setFont(new java.awt.Font("TH Sarabun New", 1, 22)); // NOI18N
+        score.setForeground(new java.awt.Color(0, 153, 51));
+        score.setText("Score :");
+        jPanel1.add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 80, 30));
 
-        jLabel5.setFont(new java.awt.Font("TH Sarabun New", 1, 19)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 153, 51));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("WIN");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 90, -1));
+        win.setFont(new java.awt.Font("TH Sarabun New", 1, 19)); // NOI18N
+        win.setForeground(new java.awt.Color(0, 153, 51));
+        win.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        win.setText("WIN");
+        jPanel1.add(win, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 90, -1));
 
-        jLabel6.setFont(new java.awt.Font("TH Sarabun New", 1, 19)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 153, 51));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("DRAW");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 90, -1));
+        draw.setFont(new java.awt.Font("TH Sarabun New", 1, 19)); // NOI18N
+        draw.setForeground(new java.awt.Color(0, 153, 51));
+        draw.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        draw.setText("DRAW");
+        jPanel1.add(draw, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 90, -1));
 
-        jLabel7.setFont(new java.awt.Font("TH Sarabun New", 1, 19)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 153, 51));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("LOSE");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 90, -1));
+        lose.setFont(new java.awt.Font("TH Sarabun New", 1, 19)); // NOI18N
+        lose.setForeground(new java.awt.Color(0, 153, 51));
+        lose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lose.setText("LOSE");
+        jPanel1.add(lose, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 90, -1));
 
-        jTextField3.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 204, 51));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("-");
-        jTextField3.setEnabled(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txt_total.setBackground(new java.awt.Color(204, 255, 204));
+        txt_total.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
+        txt_total.setForeground(new java.awt.Color(0, 204, 51));
+        txt_total.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_total.setText("-");
+        txt_total.setEnabled(false);
+        txt_total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txt_totalActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 90, 30));
+        jPanel1.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 90, 30));
 
-        jTextField6.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 204, 51));
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setText("-");
-        jTextField6.setEnabled(false);
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txt_win.setBackground(new java.awt.Color(204, 255, 204));
+        txt_win.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
+        txt_win.setForeground(new java.awt.Color(0, 204, 51));
+        txt_win.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_win.setText("-");
+        txt_win.setEnabled(false);
+        txt_win.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txt_winActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 90, 30));
+        jPanel1.add(txt_win, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 90, 30));
 
-        jTextField7.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 204, 51));
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.setText("-");
-        jTextField7.setEnabled(false);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txt_draw.setBackground(new java.awt.Color(204, 255, 204));
+        txt_draw.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
+        txt_draw.setForeground(new java.awt.Color(0, 204, 51));
+        txt_draw.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_draw.setText("-");
+        txt_draw.setEnabled(false);
+        txt_draw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txt_drawActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 90, 30));
+        jPanel1.add(txt_draw, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 90, 30));
 
-        jTextField8.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(0, 204, 51));
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField8.setText("-");
-        jTextField8.setEnabled(false);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txt_lose.setBackground(new java.awt.Color(204, 255, 204));
+        txt_lose.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
+        txt_lose.setForeground(new java.awt.Color(0, 204, 51));
+        txt_lose.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_lose.setText("-");
+        txt_lose.setEnabled(false);
+        txt_lose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txt_loseActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 90, 30));
+        jPanel1.add(txt_lose, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 90, 30));
 
-        jLabel8.setFont(new java.awt.Font("TH SarabunPSK", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 153, 51));
-        jLabel8.setText("ONLINE PLAYERS");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 170, 30));
+        online_player.setFont(new java.awt.Font("TH SarabunPSK", 1, 24)); // NOI18N
+        online_player.setForeground(new java.awt.Color(0, 153, 51));
+        online_player.setText("ONLINE PLAYERS");
+        jPanel1.add(online_player, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 170, 30));
 
-        jButton3.setBackground(new java.awt.Color(74, 226, 162));
-        jButton3.setFont(new java.awt.Font("TH SarabunPSK", 1, 20)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Leaderboard_17px.png"))); // NOI18N
-        jButton3.setText("RANKING");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, 30));
+        btn_ranking.setBackground(new java.awt.Color(74, 226, 162));
+        btn_ranking.setFont(new java.awt.Font("TH SarabunPSK", 1, 20)); // NOI18N
+        btn_ranking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Leaderboard_17px.png"))); // NOI18N
+        btn_ranking.setText("RANKING");
+        jPanel1.add(btn_ranking, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, 30));
 
-        jButton4.setBackground(new java.awt.Color(138, 226, 189));
-        jButton4.setFont(new java.awt.Font("TH SarabunPSK", 1, 20)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Rules_17px.png"))); // NOI18N
-        jButton4.setText("RULES");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 110, 30));
+        btn_rules.setBackground(new java.awt.Color(138, 226, 189));
+        btn_rules.setFont(new java.awt.Font("TH SarabunPSK", 1, 20)); // NOI18N
+        btn_rules.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Rules_17px.png"))); // NOI18N
+        btn_rules.setText("RULES");
+        jPanel1.add(btn_rules, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 110, 30));
 
-        jButton5.setBackground(new java.awt.Color(71, 239, 163));
-        jButton5.setFont(new java.awt.Font("TH SarabunPSK", 1, 20)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game Controller_17px.png"))); // NOI18N
-        jButton5.setText("MATCHING");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btn_matching.setBackground(new java.awt.Color(71, 239, 163));
+        btn_matching.setFont(new java.awt.Font("TH SarabunPSK", 1, 20)); // NOI18N
+        btn_matching.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game Controller_17px.png"))); // NOI18N
+        btn_matching.setText("MATCHING");
+        btn_matching.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btn_matchingActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 520, 120, 30));
+        jPanel1.add(btn_matching, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 520, 120, 30));
 
         list_User.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -248,14 +252,14 @@ public class lobby extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 680, 320));
 
-        jButton8.setBackground(new java.awt.Color(102, 255, 102));
-        jButton8.setText("refresh");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btn_refresh.setBackground(new java.awt.Color(102, 255, 102));
+        btn_refresh.setText("refresh");
+        btn_refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btn_refreshActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 90, 30));
+        jPanel1.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -279,14 +283,14 @@ public class lobby extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
        logout();
         login form = new login();
         frame.setContentPane(form);
         frame.pack();
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);       
         frame.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_logoutActionPerformed
 public void logout(){
              BasicDBObject documents = new BasicDBObject();
             documents.put("username",(String) dockUser.get("username"));
@@ -296,54 +300,54 @@ public void logout(){
             searchQuery.put("$set",status);
             user.update(documents, searchQuery);  
 }
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txt_showUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_showUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txt_showUsernameActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_editActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txt_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_totalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txt_totalActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txt_winActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_winActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txt_winActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txt_drawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_drawActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txt_drawActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txt_loseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_loseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txt_loseActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btn_inviteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inviteActionPerformed
         if(!list_User.getSelectionModel().isSelectionEmpty()){
         String name =(String) list_User.getModel().getValueAt( list_User.getSelectedRow(),0);
         letInvite(name);
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btn_inviteActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btn_matchingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matchingActionPerformed
         letMatching();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btn_matchingActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
          setLobbyTable();
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btn_refreshActionPerformed
 public void setMyinfo(DBObject dockUser){
-    jTextField2.setText((String) dockUser.get("username")+"  A.K.A  "+(String) dockUser.get("name"));
+    txt_showUsername.setText((String) dockUser.get("username")+"  A.K.A  "+(String) dockUser.get("name"));
     int win = (Integer) dockUser.get("score_win");
     int lose = (Integer) dockUser.get("score_lose");
     int draw = (Integer) dockUser.get("score_draw");
     int total=win+lose+draw;
-    jTextField6.setText(Integer.toString(win));
-    jTextField7.setText(Integer.toString(lose));
-    jTextField8.setText(Integer.toString(draw));
-    jTextField6.setText(Integer.toString(total));
+    txt_win.setText(Integer.toString(win));
+    txt_draw.setText(Integer.toString(lose));
+    txt_lose.setText(Integer.toString(draw));
+    txt_win.setText(Integer.toString(total));
     int icon = (Integer) dockUser.get("icon");
     if(icon==0){
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_038.gif")));
@@ -491,28 +495,28 @@ public void gotoRanking(){
     }
     Timer tm;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton btn_edit;
+    private javax.swing.JButton btn_invite;
+    private javax.swing.JButton btn_logout;
+    private javax.swing.JButton btn_matching;
+    private javax.swing.JButton btn_ranking;
+    private javax.swing.JButton btn_refresh;
+    private javax.swing.JButton btn_rules;
+    private javax.swing.JLabel draw;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTable list_User;
+    private javax.swing.JLabel lose;
+    private javax.swing.JLabel online_player;
+    private javax.swing.JLabel score;
+    private javax.swing.JLabel total;
+    private javax.swing.JTextField txt_draw;
+    private javax.swing.JTextField txt_lose;
+    private javax.swing.JTextField txt_showUsername;
+    private javax.swing.JTextField txt_total;
+    private javax.swing.JTextField txt_win;
+    private javax.swing.JLabel username;
+    private javax.swing.JLabel win;
     // End of variables declaration//GEN-END:variables
 }
