@@ -5,6 +5,20 @@
  */
 package test123;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+import static test123.login.dockUser;
+import static test123.login.frame;
+import static test123.login.user;
+
 /**
  *
  * @author I3
@@ -15,7 +29,9 @@ public class lobby extends javax.swing.JPanel {
      * Creates new form NewJPanel
      */
     public lobby() {
-        initComponents();
+        initComponents();        
+        
+        
     }
 
     /**
@@ -28,6 +44,7 @@ public class lobby extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -43,83 +60,28 @@ public class lobby extends javax.swing.JPanel {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
-        jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField26 = new javax.swing.JTextField();
-        jTextField27 = new javax.swing.JTextField();
-        jTextField28 = new javax.swing.JTextField();
-        jTextField29 = new javax.swing.JTextField();
-        jTextField30 = new javax.swing.JTextField();
-        jTextField32 = new javax.swing.JTextField();
-        jTextField33 = new javax.swing.JTextField();
-        jTextField34 = new javax.swing.JTextField();
-        jTextField35 = new javax.swing.JTextField();
-        jTextField36 = new javax.swing.JTextField();
-        jTextField37 = new javax.swing.JTextField();
-        jTextField38 = new javax.swing.JTextField();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
-        jTextField41 = new javax.swing.JTextField();
-        jTextField42 = new javax.swing.JTextField();
-        jTextField43 = new javax.swing.JTextField();
-        jTextField44 = new javax.swing.JTextField();
-        jTextField45 = new javax.swing.JTextField();
-        jTextField46 = new javax.swing.JTextField();
-        jTextField47 = new javax.swing.JTextField();
-        jTextField48 = new javax.swing.JTextField();
-        jTextField49 = new javax.swing.JTextField();
-        jTextField50 = new javax.swing.JTextField();
-        jTextField51 = new javax.swing.JTextField();
-        jTextField52 = new javax.swing.JTextField();
-        jTextField53 = new javax.swing.JTextField();
-        jTextField54 = new javax.swing.JTextField();
-        jTextField55 = new javax.swing.JTextField();
-        jTextField56 = new javax.swing.JTextField();
-        jTextField57 = new javax.swing.JTextField();
-        jTextField31 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        list_User = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField58 = new javax.swing.JTextField();
-        jTextField59 = new javax.swing.JTextField();
-        jTextField60 = new javax.swing.JTextField();
-        jTextField61 = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(860, 552));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton7.setBackground(new java.awt.Color(255, 255, 51));
+        jButton7.setText("INVITE");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 90, 30));
+
         jLabel1.setBackground(java.awt.Color.gray);
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("jLabel1");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setMaximumSize(new java.awt.Dimension(200, 200));
         jLabel1.setMinimumSize(new java.awt.Dimension(200, 200));
@@ -248,10 +210,6 @@ public class lobby extends javax.swing.JPanel {
         jLabel8.setText("ONLINE PLAYERS");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 170, 30));
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 51));
-        jButton6.setText("INVITE");
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 110, 30));
-
         jButton3.setBackground(new java.awt.Color(74, 226, 162));
         jButton3.setFont(new java.awt.Font("TH SarabunPSK", 1, 20)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Leaderboard_17px.png"))); // NOI18N
@@ -268,325 +226,36 @@ public class lobby extends javax.swing.JPanel {
         jButton5.setFont(new java.awt.Font("TH SarabunPSK", 1, 20)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game Controller_17px.png"))); // NOI18N
         jButton5.setText("MATCHING");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 520, 120, 30));
 
-        jTextField1.setBackground(new java.awt.Color(158, 231, 184));
-        jTextField1.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("NO.");
-        jTextField1.setEnabled(false);
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 50, 30));
-
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setEnabled(false);
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 350, 30));
-
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setText("-");
-        jTextField9.setEnabled(false);
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 80, 30));
-
-        jTextField10.setBackground(new java.awt.Color(170, 251, 130));
-        jTextField10.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField10.setText("DRAW");
-        jTextField10.setEnabled(false);
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 80, 30));
-
-        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField11.setText("9");
-        jTextField11.setEnabled(false);
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 50, 30));
-
-        jTextField12.setBackground(new java.awt.Color(204, 255, 204));
-        jTextField12.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField12.setText("LOSE");
-        jTextField12.setEnabled(false);
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, 80, 30));
-
-        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField13.setText("1");
-        jTextField13.setEnabled(false);
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 50, 30));
-
-        jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField14.setText("2");
-        jTextField14.setEnabled(false);
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 50, 30));
-
-        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField15.setText("3");
-        jTextField15.setEnabled(false);
-        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 50, 30));
-
-        jTextField16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField16.setText("4");
-        jTextField16.setEnabled(false);
-        jPanel1.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 50, 30));
-
-        jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField17.setText("5");
-        jTextField17.setEnabled(false);
-        jPanel1.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 50, 30));
-
-        jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField18.setText("6");
-        jTextField18.setEnabled(false);
-        jPanel1.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 50, 30));
-
-        jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField19.setText("7");
-        jTextField19.setEnabled(false);
-        jPanel1.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 50, 30));
-
-        jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField20.setText("8");
-        jTextField20.setEnabled(false);
-        jPanel1.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 50, 30));
-
-        jTextField21.setBackground(new java.awt.Color(158, 231, 184));
-        jTextField21.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField21.setText("USERNAME");
-        jTextField21.setEnabled(false);
-        jPanel1.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 350, 30));
-
-        jTextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField22.setEnabled(false);
-        jPanel1.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 350, 30));
-
-        jTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField23.setEnabled(false);
-        jPanel1.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 350, 30));
-
-        jTextField24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField24.setEnabled(false);
-        jPanel1.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 350, 30));
-
-        jTextField25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField25.setEnabled(false);
-        jPanel1.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 350, 30));
-
-        jTextField26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField26.setEnabled(false);
-        jPanel1.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 350, 30));
-
-        jTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField27.setEnabled(false);
-        jPanel1.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 350, 30));
-
-        jTextField28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField28.setEnabled(false);
-        jPanel1.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 350, 30));
-
-        jTextField29.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField29.setEnabled(false);
-        jPanel1.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 350, 30));
-
-        jTextField30.setBackground(new java.awt.Color(95, 235, 103));
-        jTextField30.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField30.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField30.setText("WIN");
-        jTextField30.setEnabled(false);
-        jPanel1.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 80, 30));
-
-        jTextField32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField32.setText("-");
-        jTextField32.setEnabled(false);
-        jPanel1.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 80, 30));
-
-        jTextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField33.setText("-");
-        jTextField33.setEnabled(false);
-        jPanel1.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 80, 30));
-
-        jTextField34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField34.setText("-");
-        jTextField34.setEnabled(false);
-        jPanel1.add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 80, 30));
-
-        jTextField35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField35.setText("-");
-        jTextField35.setEnabled(false);
-        jPanel1.add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 80, 30));
-
-        jTextField36.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField36.setText("-");
-        jTextField36.setEnabled(false);
-        jPanel1.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 80, 30));
-
-        jTextField37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField37.setText("-");
-        jTextField37.setEnabled(false);
-        jPanel1.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 80, 30));
-
-        jTextField38.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField38.setText("-");
-        jTextField38.setEnabled(false);
-        jPanel1.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 80, 30));
-
-        jTextField39.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField39.setText("-");
-        jTextField39.setEnabled(false);
-        jPanel1.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 80, 30));
-
-        jTextField40.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField40.setText("-");
-        jTextField40.setEnabled(false);
-        jPanel1.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 80, 30));
-
-        jTextField41.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField41.setText("-");
-        jTextField41.setEnabled(false);
-        jPanel1.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, 80, 30));
-
-        jTextField42.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField42.setText("-");
-        jTextField42.setEnabled(false);
-        jPanel1.add(jTextField42, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 80, 30));
-
-        jTextField43.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField43.setText("-");
-        jTextField43.setEnabled(false);
-        jPanel1.add(jTextField43, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 80, 30));
-
-        jTextField44.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField44.setText("-");
-        jTextField44.setEnabled(false);
-        jPanel1.add(jTextField44, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 80, 30));
-
-        jTextField45.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField45.setText("-");
-        jTextField45.setEnabled(false);
-        jPanel1.add(jTextField45, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 80, 30));
-
-        jTextField46.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField46.setText("-");
-        jTextField46.setEnabled(false);
-        jPanel1.add(jTextField46, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 270, 80, 30));
-
-        jTextField47.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField47.setText("-");
-        jTextField47.setEnabled(false);
-        jPanel1.add(jTextField47, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 80, 30));
-
-        jTextField48.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField48.setText("-");
-        jTextField48.setEnabled(false);
-        jPanel1.add(jTextField48, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 330, 80, 30));
-
-        jTextField49.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField49.setText("-");
-        jTextField49.setEnabled(false);
-        jPanel1.add(jTextField49, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 80, 30));
-
-        jTextField50.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField50.setText("-");
-        jTextField50.setEnabled(false);
-        jPanel1.add(jTextField50, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 80, 30));
-
-        jTextField51.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField51.setText("-");
-        jTextField51.setEnabled(false);
-        jPanel1.add(jTextField51, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 80, 30));
-
-        jTextField52.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField52.setText("-");
-        jTextField52.setEnabled(false);
-        jPanel1.add(jTextField52, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 80, 30));
-
-        jTextField53.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField53.setText("-");
-        jTextField53.setEnabled(false);
-        jPanel1.add(jTextField53, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 80, 30));
-
-        jTextField54.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField54.setText("-");
-        jTextField54.setEnabled(false);
-        jPanel1.add(jTextField54, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, 80, 30));
-
-        jTextField55.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField55.setText("-");
-        jTextField55.setEnabled(false);
-        jPanel1.add(jTextField55, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 390, 80, 30));
-
-        jTextField56.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField56.setText("-");
-        jTextField56.setEnabled(false);
-        jPanel1.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 360, 80, 30));
-
-        jTextField57.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField57.setText("-");
-        jTextField57.setEnabled(false);
-        jPanel1.add(jTextField57, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 80, 30));
-
-        jTextField31.setBackground(new java.awt.Color(158, 231, 184));
-        jTextField31.setFont(new java.awt.Font("TH SarabunPSK", 1, 18)); // NOI18N
-        jTextField31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField31.setText("INVITE");
-        jTextField31.setEnabled(false);
-        jPanel1.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 110, 30));
-
-        jButton7.setBackground(new java.awt.Color(255, 255, 51));
-        jButton7.setText("INVITE");
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 110, 30));
-
-        jButton8.setBackground(new java.awt.Color(255, 255, 51));
-        jButton8.setText("INVITE");
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 110, 30));
-
-        jButton9.setBackground(new java.awt.Color(255, 255, 51));
-        jButton9.setText("INVITE");
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 110, 30));
-
-        jButton10.setBackground(new java.awt.Color(255, 255, 51));
-        jButton10.setText("INVITE");
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 110, 30));
-
-        jButton11.setBackground(new java.awt.Color(255, 255, 51));
-        jButton11.setText("INVITE");
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 330, 110, 30));
-
-        jButton12.setBackground(new java.awt.Color(255, 255, 51));
-        jButton12.setText("INVITE");
-        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, 110, 30));
-
-        jButton13.setBackground(new java.awt.Color(255, 255, 51));
-        jButton13.setText("INVITE");
-        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 110, 30));
-
-        jButton14.setBackground(new java.awt.Color(255, 255, 51));
-        jButton14.setText("INVITE");
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 110, 30));
-
-        jButton15.setBackground(new java.awt.Color(255, 255, 51));
-        jButton15.setText("INVITE");
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 480, 110, 30));
-
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setEnabled(false);
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 350, 30));
-
-        jTextField58.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField58.setText("-");
-        jTextField58.setEnabled(false);
-        jPanel1.add(jTextField58, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 80, 30));
-
-        jTextField59.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField59.setText("10");
-        jTextField59.setEnabled(false);
-        jPanel1.add(jTextField59, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 50, 30));
-
-        jTextField60.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField60.setText("-");
-        jTextField60.setEnabled(false);
-        jPanel1.add(jTextField60, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 80, 30));
-
-        jTextField61.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField61.setText("-");
-        jTextField61.setEnabled(false);
-        jPanel1.add(jTextField61, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, 80, 30));
+        list_User.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(list_User);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 680, 320));
+
+        jButton8.setBackground(new java.awt.Color(102, 255, 102));
+        jButton8.setText("refresh");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -611,9 +280,22 @@ public class lobby extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       logout();
+        login form = new login();
+        frame.setContentPane(form);
+        frame.pack();
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);       
+        frame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+public void logout(){
+             BasicDBObject documents = new BasicDBObject();
+            documents.put("username",(String) dockUser.get("username"));
+            BasicDBObject searchQuery = new BasicDBObject();
+            BasicDBObject status = new BasicDBObject();
+            status.put("status","offline");
+            searchQuery.put("$set",status);
+            user.update(documents, searchQuery);  
+}
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
@@ -638,23 +320,184 @@ public class lobby extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        if(!list_User.getSelectionModel().isSelectionEmpty()){
+        String name =(String) list_User.getModel().getValueAt( list_User.getSelectedRow(),0);
+        letInvite(name);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        letMatching();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+         setLobbyTable();
+    }//GEN-LAST:event_jButton8ActionPerformed
+public void setMyinfo(DBObject dockUser){
+    jTextField2.setText((String) dockUser.get("username")+"  A.K.A  "+(String) dockUser.get("name"));
+    int win = (Integer) dockUser.get("score_win");
+    int lose = (Integer) dockUser.get("score_lose");
+    int draw = (Integer) dockUser.get("score_draw");
+    int total=win+lose+draw;
+    jTextField6.setText(Integer.toString(win));
+    jTextField7.setText(Integer.toString(lose));
+    jTextField8.setText(Integer.toString(draw));
+    jTextField6.setText(Integer.toString(total));
+    int icon = (Integer) dockUser.get("icon");
+    if(icon==0){
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_038.gif")));
+    }else if(icon==1){
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_042.gif")));
+    }else if(icon==2){
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_040.gif")));
+    }
+    setLobbyTable();
+    
+    
+}
+
+public void gotoRanking(){
+//        rankForm rank = new rankForm();
+//        frame.setContentPane(rank.mainPanel);
+    }
+
+    public void gotoEdit(){
+//        editForm edit = new editForm();
+//        frame.setContentPane(edit.mainPanel);
+    }
+
+    public void gotoLogin(){
+//        loginForm login = new loginForm();
+//        frame.setContentPane(login.mainPanel);
+
+    }
+
+    public void gotoRules(){
+//        rulesForm rules = new rulesForm();
+//        frame.setContentPane(rules.mainPanel);
+    }
+
+    public void letMatching(){
+
+        showMessageMatching();
+    }
+
+    public void letInvite(String name){
+
+        showMessageWaitAccept(name);
+    }
+
+    public void gotoGame(){
+//        gameForm game = new gameForm();
+//        frame.setContentPane(game.mainPanel);
+
+    }
+//public void setLobby(){
+//        DBCursor cursor = user.find();         
+//                     
+//             while (cursor.hasNext()) {
+//                DBObject dockran= cursor.next();
+//                if(!dockran.get("status").equals("offline")){
+//               setTextField(jTextField22,jTextField39,jTextField40,jTextField43,dockran);
+//               jTextField40.setText((String) dockran.get("score_lose"));
+//               jTextField43.setText((String) dockran.get("score_draw"));
+//                }
+//             }
+////        lobbyForm lobby = new lobbyForm();
+////        frame.setContentPane(lobby.mainPanel);
+//    }
+    public void setLobbyTable(){
+        
+          
+        DBCursor cursor = user.find();         
+            String[] columnNames = {"name", "win", "draw","lose"};
+            DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+            while(cursor.hasNext()) {
+                DBObject obj = cursor.next();
+                 if(!obj.get("status").equals("offline")&&!obj.get("username").equals((String)dockUser.get("username"))){
+                String name = (String)obj.get("name");
+                String win = Integer.toString((Integer)obj.get("score_win"));
+                String draw = Integer.toString((Integer)obj.get("score_draw"));
+                String lose = Integer.toString((Integer)obj.get("score_lose"));
+                 model.addRow(new Object[] { name, win,draw, lose });
+                }
+                
+               
+        }
+        list_User.setModel(model);
+
+        cursor.close(); 
+         
+    }
+     public void setTextField(JTextField t1,JTextField t2,JTextField t3,JTextField t4,DBObject dockran){
+                t1.setText((String) dockran.get("name")+" A.K.A. "+(String) dockran.get("username"));
+              t2.setText((String) dockran.get("score_win"));
+               t3.setText((String) dockran.get("score_lose"));
+               t4.setText((String) dockran.get("score_draw"));
+     }
+
+    public void showMessageMatching(){
+        JOptionPane.showMessageDialog(null, "Matching...");
+        if(JOptionPane.CANCEL_OPTION==2){
+
+        }
+    }
+
+    public void showMessageWaitAccept(String name){
+        JOptionPane.showMessageDialog(null, "Waiting..."+name);
+        if(JOptionPane.CANCEL_OPTION==2){
+
+        }
+    }
+
+    public void showMessageBusy(){
+        JOptionPane.showMessageDialog(null, "Your friend is busy");
+    }
+
+    public void showMessageInvite(){
+        JOptionPane.showMessageDialog(null, "Someone invite you");
+        if(JOptionPane.YES_OPTION==0){
+            gotoGame();
+        }
+    }
+    public void updateIsMatching(){
+
+    }
+
+    public void updeteIsMatched(){
+
+    }
+
+    public void updateIsDefault(){
+
+    }
+
+    public void updateIsInviting(){
+
+    }
+
+    public void matchStatus(){
+
+    }
+
+    public void checkStatus(){
+
+    }
+
+    public void checkAccept(){
+
+    }
+    Timer tm;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -664,66 +507,12 @@ public class lobby extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
-    private javax.swing.JTextField jTextField49;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField50;
-    private javax.swing.JTextField jTextField51;
-    private javax.swing.JTextField jTextField52;
-    private javax.swing.JTextField jTextField53;
-    private javax.swing.JTextField jTextField54;
-    private javax.swing.JTextField jTextField55;
-    private javax.swing.JTextField jTextField56;
-    private javax.swing.JTextField jTextField57;
-    private javax.swing.JTextField jTextField58;
-    private javax.swing.JTextField jTextField59;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField60;
-    private javax.swing.JTextField jTextField61;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable list_User;
     // End of variables declaration//GEN-END:variables
 }
