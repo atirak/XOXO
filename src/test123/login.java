@@ -5,6 +5,15 @@
  */
 package test123;
 
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import java.awt.Dimension;
+import java.io.IOException;
+import javax.swing.JFrame;
+
 /**
  *
  * @author I3
@@ -65,6 +74,11 @@ public class login extends javax.swing.JPanel {
         jButton2.setText("Register");
         jButton2.setAutoscrolls(true);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(0, 102, 102));
         jLabel2.setFont(new java.awt.Font("Riviera", 1, 18)); // NOI18N
@@ -146,6 +160,40 @@ public class login extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        register form2 = new register();
+        frame.setContentPane(form2);
+        frame.pack();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+    static MongoClientURI uri ;
+    static MongoClient mongo ;
+    static DB db;
+    static DBCollection user;
+    static DBObject dockUser;
+    static JFrame frame;
+    public static void main(String[] args) {
+         frame = new JFrame();
+        login form = new login();
+        frame.setContentPane(form);
+        frame.pack();
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setMinimumSize(new Dimension(500,500));        
+        frame.setVisible(true);
+        connect();
+
+    }
+    public static void connect(){
+        try {
+            uri = new MongoClientURI("mongodb://dbboat:boat1234@ds245512.mlab.com:45512/dbxo");
+            mongo = new MongoClient(uri);
+            db = mongo.getDB(uri.getDatabase());
+            user = db.getCollection("user");
+            System.out.print("success");
+        }catch (IOException ex) {
+
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
