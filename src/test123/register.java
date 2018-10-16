@@ -5,6 +5,14 @@
  */
 package test123;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import java.awt.Dimension;
+import javax.swing.JOptionPane;
+import static test123.login.dockUser;
+import static test123.login.frame;
+import static test123.login.user;
+
 /**
  *
  * @author I3
@@ -73,10 +81,25 @@ public class register extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_038.gif"))); // NOI18N
         jLabel2.setText("jLabel2");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_042.gif"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_040.gif"))); // NOI18N
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,6 +164,11 @@ public class register extends javax.swing.JPanel {
         jButton2.setText("Cancel");
         jButton2.setAutoscrolls(true);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/1.png"))); // NOI18N
 
@@ -239,8 +267,95 @@ public class register extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Submit();
     }//GEN-LAST:event_jButton1ActionPerformed
+    public void Submit() {
+        BasicDBObject searchQuery  = new BasicDBObject();
+        searchQuery.put("username",jTextField3.getText());
+        dockUser = user.findOne(searchQuery);
+        if(checkInput(dockUser)){
+             save_Regis();
+            show_message();
 
+        }
+        
+    }
+    public boolean checkInput(DBObject dockuser) {
+        if(Check_user_wrong(dockuser)&&Check_password_wrong()&&
+           Check_meet_condition()&&Check_complete_inform()){
+            return true;
+        }
+            
+        return false;
+    }
+     public boolean Check_user_wrong(DBObject dockuser) {
+        if(dockUser!=null){
+         JOptionPane.showMessageDialog(null, "username ซ้ำ");
+         return false;
+        }
+         return true;
+    }
+      public boolean Check_password_wrong() {
+        if(jTextField2.getText().length()<8){
+            JOptionPane.showMessageDialog(null, "password 8 ตัวอักษรขึ้นไป");
+            return false;
+        }
+         return true;
+    }
+       public boolean Check_meet_condition() {
+        if(!jTextField2.getText().equals(jTextField4.getText())){
+            JOptionPane.showMessageDialog(null, "password ไม่ตรงกัน");
+        return false;
+        }
+         return true;
+    }
+       public boolean Check_complete_inform() {
+        if(jTextField1.getText().isEmpty()||jTextField2.getText().isEmpty()||jTextField3.getText().isEmpty()||jTextField4.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ใส่ข้อมูลให้ครบ");
+            return false;
+        }
+         return true;
+    }
+    public void save_Regis() {
+        BasicDBObject add = new BasicDBObject();
+            add.put("name", jTextField1.getText());
+            add.put("username", jTextField3.getText());
+            add.put("password", new String(jTextField2.getText()));
+            add.put("score_win", 0);
+            add.put("score_lose", 0);
+            add.put("score_draw", 0);
+            add.put("status", "offline");
+            add.put("icon", icon);
+            user.insert(add);
+            jTextField1.setText(null);
+            jTextField3.setText(null);
+            jTextField2.setText(null);
+            jTextField4.setText(null);
+          
+    }
+     public void show_message() {
+        JOptionPane.showMessageDialog(null, "success");
+    }
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       login form = new login();
+        frame.setContentPane(form);
+        frame.pack();            
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        icon=0;
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        icon =1;
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        icon=2;
+    }//GEN-LAST:event_jLabel10MouseClicked
+static int icon =0;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
