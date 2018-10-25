@@ -3,26 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test123;
+package GameXO;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import static test123.login.dockUser;
-import static test123.login.frame;
-import static test123.login.user;
-
 /**
  *
  * @author I3
  */
-public class register extends javax.swing.JPanel {
+public class Register extends javax.swing.JPanel {
 
     /**
      * Creates new form register
      */
-    public register() {
+    public Register() {
         initComponents();
     }
 
@@ -268,96 +264,28 @@ public class register extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_yournameActionPerformed
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
-        // TODO add your handling code here:
-        Submit();
+        RegisterService.submit(txt_yourname.getText(),txt_username.getText(),txt_password.getText(),txt_confirmPassword.getText());
     }//GEN-LAST:event_btn_submitActionPerformed
-    public void Submit() {
-        BasicDBObject searchQuery  = new BasicDBObject();
-        searchQuery.put("username",txt_username.getText());
-        dockUser = user.findOne(searchQuery);
-        if(checkInput(dockUser)){
-             save_Regis();
-            show_message();
 
-        }
-        
-    }
-    public boolean checkInput(DBObject dockuser) {
-        if(Check_user_wrong(dockuser)&&Check_complete_inform()
-                &&Check_password_wrong()&&Check_meet_condition()){
-            return true;
-        }
-            
-        return false;
-    }
-     public boolean Check_user_wrong(DBObject dockuser) {
-        if(dockUser!=null){
-         JOptionPane.showMessageDialog(null, "username ซ้ำ");
-         return false;
-        }
-         return true;
-    }
-      public boolean Check_password_wrong() {
-        if(txt_password.getText().length()<8){
-            JOptionPane.showMessageDialog(null, "password 8 ตัวอักษรขึ้นไป");
-            return false;
-        }
-         return true;
-    }
-       public boolean Check_meet_condition() {
-        if(!txt_password.getText().equals(txt_confirmPassword.getText())){
-            JOptionPane.showMessageDialog(null, "password ไม่ตรงกัน");
-        return false;
-        }
-         return true;
-    }
-       public boolean Check_complete_inform() {
-        if(txt_yourname.getText().isEmpty()||txt_password.getText().isEmpty()||txt_username.getText().isEmpty()||txt_confirmPassword.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "ใส่ข้อมูลให้ครบ");
-            return false;
-        }
-         return true;
-    }
-    public void save_Regis() {
-        BasicDBObject add = new BasicDBObject();
-            add.put("name", txt_yourname.getText());
-            add.put("username", txt_username.getText());
-            add.put("password", new String(txt_password.getText()));
-            add.put("score_win", 0);
-            add.put("score_lose", 0);
-            add.put("score_draw", 0);
-            add.put("status", "offline");
-            add.put("icon", icon);
-            user.insert(add);
-            txt_yourname.setText(null);
-            txt_username.setText(null);
-            txt_password.setText(null);
-            txt_confirmPassword.setText(null);
-          
-    }
-     public void show_message() {
-        JOptionPane.showMessageDialog(null, "success");
-    }
+    
+     
     
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-       login form = new login();
-        frame.setContentPane(form);
-        frame.pack();   
-        frame.setVisible(true);
+        RegisterService.Login();
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void lab_selectPic1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lab_selectPic1MouseClicked
-        icon=0;
+        RegisterService.setIcon(0);
     }//GEN-LAST:event_lab_selectPic1MouseClicked
 
     private void lab_selectPic2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lab_selectPic2MouseClicked
-        icon =1;
+        RegisterService.setIcon(1);
     }//GEN-LAST:event_lab_selectPic2MouseClicked
 
     private void lab_selectPic3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lab_selectPic3MouseClicked
-        icon=2;
+        RegisterService.setIcon(2);
     }//GEN-LAST:event_lab_selectPic3MouseClicked
-static int icon =0;
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancel;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test123;
+package GameXO;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -22,12 +22,12 @@ import javax.swing.JPanel;
  *
  * @author I3
  */
-public class login extends javax.swing.JPanel {
+public class Login extends javax.swing.JPanel {
 
     /**
      * Creates new form login
      */
-    public login() {
+    public Login() {
         initComponents();
     }
 
@@ -162,104 +162,14 @@ public class login extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-       
-        if(txt_usernabe.getText().equals("")||txt_password.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "กรุณากรอกข้อมูลให้ครบถ้วน");
-        }
-        else{
-            BasicDBObject searchQuery  = new BasicDBObject();
-        searchQuery.put("username",txt_usernabe.getText());
-        dockUser = user.findOne(searchQuery);
-            if(Vertify_Username(txt_usernabe.getText(),txt_password.getText(),dockUser)){
-                //login fin
-                JOptionPane.showMessageDialog(null, "ล็อคอินสำเร็จ");
-                lobby form = new lobby();
-                frame.setContentPane(form);
-                frame.pack();
-                
-                frame.setVisible(true);
-                form.setMyinfo(dockUser);
-                
-                BasicDBObject documents = new BasicDBObject();
-            documents.put("username",(String) dockUser.get("username"));
-            BasicDBObject search_user = new BasicDBObject();
-            BasicDBObject status = new BasicDBObject();
-            status.put("status","online");
-            search_user.put("$set",status);
-            user.update(documents, search_user); 
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "username หรือ password ผิดพลาด");
-            }
-        }
+       LoginService.login(txt_usernabe.getText(),txt_password.getText());
     }//GEN-LAST:event_btn_loginActionPerformed
-    public static boolean Vertify_Username(String username,String password,DBObject dockUser){
-       
-        if(is_Username_Exit(username,dockUser) && is_Password_Correct(password,dockUser)){
-            return true;
-        }
-        return false;
-    }
     
-    public static boolean is_Username_Exit(String username,DBObject dockUser){
-        
-        if(dockUser != null){
-            return true;
-        }
-        return false;
-    }
-    public static boolean is_Password_Correct(String password,DBObject dockUser){
-        String passInDB = (String) dockUser.get("password");
-        if(passInDB.equals(password)){
-            return true;
-        }
-        return false;
-    }
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
-        Regis();
+         LoginService.Regis();
     }//GEN-LAST:event_btn_registerActionPerformed
-    public void Regis(){  
-        register form = new register();
-        Display_Regis(form);
-        
-    }
-    public void Display_Regis(JPanel regis){
-        frame.setContentPane(regis);
-        frame.pack();    
-        frame.setVisible(true);
-        
-    }
-    static MongoClientURI uri ;
-    static MongoClient mongo ;
-    static DB db;
-    static DBCollection user;
-    static DBObject dockUser;
-    static JFrame frame;
    
     
-    
-    public static void main(String[] args) {
-         frame = new JFrame();
-        login form = new login();
-        frame.setContentPane(form);
-        frame.pack();
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);        
-        frame.setVisible(true);
-        connect();
-
-    }
-    public static void connect(){
-        try {
-            uri = new MongoClientURI("mongodb://dbboat:boat1234@ds245512.mlab.com:45512/dbxo");
-            mongo = new MongoClient(uri);
-            db = mongo.getDB(uri.getDatabase());
-            user = db.getCollection("user");
-            System.out.print("success");
-        }catch (IOException ex) {
-
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;

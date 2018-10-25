@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test123;
+package GameXO;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
@@ -11,27 +11,24 @@ import com.mongodb.DBObject;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
-import static test123.login.dockUser;
-import static test123.login.frame;
-import static test123.login.user;
+
 
 /**
  *
  * @author I3
  */
-public class lobby extends javax.swing.JPanel {
+public class Lobby extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel
      */
-    public lobby() {
+    public Lobby() {
         initComponents();        
-        
-        
     }
 
     /**
@@ -284,22 +281,10 @@ public class lobby extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
-       logout();
-        login form = new login();
-        frame.setContentPane(form);
-        frame.pack();
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);       
-        frame.setVisible(true);
+        String temp = txt_showUsername.getText();
+        LobbyService.logout(temp.substring(0, temp.indexOf(' ')));
     }//GEN-LAST:event_btn_logoutActionPerformed
-public void logout(){
-             BasicDBObject documents = new BasicDBObject();
-            documents.put("username",(String) dockUser.get("username"));
-            BasicDBObject searchQuery = new BasicDBObject();
-            BasicDBObject status = new BasicDBObject();
-            status.put("status","offline");
-            searchQuery.put("$set",status);
-            user.update(documents, searchQuery);  
-}
+
     private void txt_showUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_showUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_showUsernameActionPerformed
@@ -327,28 +312,32 @@ public void logout(){
     private void btn_inviteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inviteActionPerformed
         if(!list_User.getSelectionModel().isSelectionEmpty()){
         String name =(String) list_User.getModel().getValueAt( list_User.getSelectedRow(),0);
-        letInvite(name);
+        LobbyService.letInvite(name);
         }
     }//GEN-LAST:event_btn_inviteActionPerformed
 
     private void btn_matchingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matchingActionPerformed
-        letMatching();
+        LobbyService.letMatching();
     }//GEN-LAST:event_btn_matchingActionPerformed
 
     private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
-         setLobbyTable();
+           setLobbyTable();
     }//GEN-LAST:event_btn_refreshActionPerformed
-public void setMyinfo(DBObject dockUser){
-    txt_showUsername.setText((String) dockUser.get("username")+"  A.K.A  "+(String) dockUser.get("name"));
-    int win = (Integer) dockUser.get("score_win");
-    int lose = (Integer) dockUser.get("score_lose");
-    int draw = (Integer) dockUser.get("score_draw");
+
+
+
+ void setLobby(Users users){
+    
+    txt_showUsername.setText((String) users.username+"  A.K.A  "+(String) users.name);
+    int win = (Integer) users.score_win;
+    int lose = (Integer) users.score_lose;
+    int draw = (Integer) users.score_draw;
     int total=win+lose+draw;
     txt_win.setText(Integer.toString(win));
     txt_draw.setText(Integer.toString(lose));
     txt_lose.setText(Integer.toString(draw));
     txt_win.setText(Integer.toString(total));
-    int icon = (Integer) dockUser.get("icon");
+    int icon = (Integer) users.icon;
     if(icon==0){
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_038.gif")));
     }else if(icon==1){
@@ -357,143 +346,36 @@ public void setMyinfo(DBObject dockUser){
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_040.gif")));
     }
     setLobbyTable();
-    
-    
 }
-
-public void gotoRanking(){
-//        rankForm rank = new rankForm();
-//        frame.setContentPane(rank.mainPanel);
-    }
-
-    public void gotoEdit(){
-//        editForm edit = new editForm();
-//        frame.setContentPane(edit.mainPanel);
-    }
-
-    public void gotoLogin(){
-//        loginForm login = new loginForm();
-//        frame.setContentPane(login.mainPanel);
-
-    }
-
-    public void gotoRules(){
-//        rulesForm rules = new rulesForm();
-//        frame.setContentPane(rules.mainPanel);
-    }
-
-    public void letMatching(){
-
-        showMessageMatching();
-    }
-
-    public void letInvite(String name){
-
-        showMessageWaitAccept(name);
-    }
-
-    public void gotoGame(){
-//        gameForm game = new gameForm();
-//        frame.setContentPane(game.mainPanel);
-
-    }
-//public void setLobby(){
-//        DBCursor cursor = user.find();         
-//                     
-//             while (cursor.hasNext()) {
-//                DBObject dockran= cursor.next();
-//                if(!dockran.get("status").equals("offline")){
-//               setTextField(jTextField22,jTextField39,jTextField40,jTextField43,dockran);
-//               jTextField40.setText((String) dockran.get("score_lose"));
-//               jTextField43.setText((String) dockran.get("score_draw"));
-//                }
-//             }
-////        lobbyForm lobby = new lobbyForm();
-////        frame.setContentPane(lobby.mainPanel);
-//    }
-    public void setLobbyTable(){
-        
-          
-        DBCursor cursor = user.find();         
-            String[] columnNames = {"name", "win", "draw","lose"};
+ void setLobbyTable(){
+     ArrayList<Users> userList=Database.getAll();
+    String[] columnNames = {"name", "win", "draw","lose"};
             DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-
-            while(cursor.hasNext()) {
-                DBObject obj = cursor.next();
-                 if(!obj.get("status").equals("offline")&&!obj.get("username").equals((String)dockUser.get("username"))){
-                String name = (String)obj.get("name");
-                String win = Integer.toString((Integer)obj.get("score_win"));
-                String draw = Integer.toString((Integer)obj.get("score_draw"));
-                String lose = Integer.toString((Integer)obj.get("score_lose"));
+            String temp = txt_showUsername.getText();
+            for(Users list:userList)
+                 if(!list.status.equals("offline")&&!list.username.equals(temp.substring(0, temp.indexOf(' ')))){
+                String name = list.name;
+                String win = Integer.toString(list.score_win);
+                String draw = Integer.toString(list.score_draw);
+                String lose = Integer.toString(list.score_lose);
                  model.addRow(new Object[] { name, win,draw, lose });
                 }
                 
-               
+               list_User.setModel(model);
         }
-        list_User.setModel(model);
+        
 
-        cursor.close(); 
-         
-    }
-     public void setTextField(JTextField t1,JTextField t2,JTextField t3,JTextField t4,DBObject dockran){
-                t1.setText((String) dockran.get("name")+" A.K.A. "+(String) dockran.get("username"));
-              t2.setText((String) dockran.get("score_win"));
-               t3.setText((String) dockran.get("score_lose"));
-               t4.setText((String) dockran.get("score_draw"));
-     }
 
-    public void showMessageMatching(){
-        JOptionPane.showMessageDialog(null, "Matching...");
-        if(JOptionPane.CANCEL_OPTION==2){
+     
 
-        }
-    }
+    
 
-    public void showMessageWaitAccept(String name){
-        JOptionPane.showMessageDialog(null, "Waiting..."+name);
-        if(JOptionPane.CANCEL_OPTION==2){
+    
 
-        }
-    }
+    
 
-    public void showMessageBusy(){
-        JOptionPane.showMessageDialog(null, "Your friend is busy");
-    }
-
-    public void showMessageInvite(){
-        JOptionPane.showMessageDialog(null, "Someone invite you");
-        if(JOptionPane.YES_OPTION==0){
-            gotoGame();
-        }
-    }
-    public void updateIsMatching(){
-
-    }
-
-    public void updeteIsMatched(){
-
-    }
-
-    public void updateIsDefault(){
-
-    }
-
-    public void updateIsInviting(){
-
-    }
-
-    public void matchStatus(){
-
-    }
-
-    public void checkStatus(){
-
-    }
-
-    public void checkAccept(){
-
-    }
-    Timer tm;
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_invite;
